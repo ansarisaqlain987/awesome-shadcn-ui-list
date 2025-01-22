@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import { SiteData } from "@/lib/data";
 import { useMemo } from "react";
 
+import { Toaster } from "@/components/ui/toaster";
 export default function Home() {
   const makeData = useMemo(() => {
     const data = [];
@@ -25,6 +26,7 @@ export default function Home() {
       <div className=" ">
         <ComponentsTable data={makeData} />
       </div>
+      <Toaster />
     </Container>
   );
 }

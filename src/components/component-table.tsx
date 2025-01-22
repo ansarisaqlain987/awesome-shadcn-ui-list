@@ -13,6 +13,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { useToast } from "@/hooks/use-toast";
 
 import { Input } from "@/components/ui/input";
 import {
@@ -74,9 +75,13 @@ export function ComponentsTable({ data }: { data: ISectionItem[] }) {
     React.useState<VisibilityState>({});
   const [globalFilter, setGlobalFilter] = React.useState("");
 
+  const { toast } = useToast();
   const onCopyClick = (val: string) => {
     copyValue(val);
-    // invoke the toaster
+    toast({
+      title: "URL Copied...",
+      description: val,
+    });
   };
 
   const columns: ColumnDef<ISectionItem>[] = React.useMemo(
@@ -106,11 +111,11 @@ export function ComponentsTable({ data }: { data: ISectionItem[] }) {
         cell: ({ row }) => {
           return (
             <div className="flex items-center">
-              <Button variant={"ghost"}>
-                <Link href={row.original.link} prefetch={true} target="_blank">
+              <Link href={row.original.link} prefetch={true} target="_blank">
+                <Button variant={"ghost"}>
                   <SquareArrowOutUpRight />
-                </Link>
-              </Button>
+                </Button>
+              </Link>
               <Button
                 variant={"ghost"}
                 onClick={() => onCopyClick(row.original.link)}
