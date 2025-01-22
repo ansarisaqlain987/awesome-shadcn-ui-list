@@ -76,14 +76,16 @@ export function ComponentsTable({ data }: { data: ISectionItem[] }) {
   const [globalFilter, setGlobalFilter] = React.useState("");
 
   const { toast } = useToast();
-  const onCopyClick = (val: string) => {
-    copyValue(val);
-    toast({
-      title: "URL Copied...",
-      description: val,
-    });
-  };
-
+  const onCopyClick = React.useCallback(
+    (val: string) => {
+      copyValue(val);
+      toast({
+        title: "URL Copied...",
+        description: val,
+      });
+    },
+    [toast]
+  );
   const columns: ColumnDef<ISectionItem>[] = React.useMemo(
     () => [
       {
@@ -127,7 +129,7 @@ export function ComponentsTable({ data }: { data: ISectionItem[] }) {
         },
       },
     ],
-    []
+    [onCopyClick]
   );
 
   const table = useReactTable({
