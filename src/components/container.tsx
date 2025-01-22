@@ -7,6 +7,6 @@ export default function Container({
   children: React.ReactNode;
   className?: string;
 }) {
-  const cname = cn(className ?? "", "container mx-auto");
+  const cname = cn(className ?? "", "container mx-auto px-8");
   return <div className={cname}>{children}</div>;
 }

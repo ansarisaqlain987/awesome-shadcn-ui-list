@@ -5,6 +5,7 @@ import { SiteData } from "@/lib/data";
 import { useMemo } from "react";
 
 import { Toaster } from "@/components/ui/toaster";
+import Footer from "@/components/footer";
 export default function Home() {
   const makeData = useMemo(() => {
     const data = [];
@@ -18,14 +19,12 @@ export default function Home() {
     }
     return data;
   }, []);
-  console.log(makeData.length);
 
   return (
-    <Container className="mb-20">
+    <Container className="mb-20 max-h-[100vdh] h-[80vdh]">
       <Header />
-      <div className=" ">
-        <ComponentsTable data={makeData} />
-      </div>
+      <ComponentsTable data={makeData} />
+      <Footer />
       <Toaster />
     </Container>
   );

@@ -168,7 +168,7 @@ export function ComponentsTable({ data }: { data: ISectionItem[] }) {
         placeholder="Search all columns..."
         debounce={300}
       />
-      <div className="rounded-md border w-full max-h-[70vh] overflow-y-auto">
+      <div className="rounded-md border w-full max-h-[65vh] overflow-y-auto">
         <Table className="w-full" style={{ tableLayout: "fixed" }}>
           <TableHeader className="w-full">
             {table.getHeaderGroups().map((headerGroup) => (
